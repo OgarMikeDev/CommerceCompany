@@ -27,6 +27,10 @@ public class Main {
                 firstCompany
         );
 
+        firstCompany.hire(firstEmployee);
+        firstCompany.hire(secondEmployee);
+        firstCompany.hire(thirdEmployee);
+        System.out.println(firstCompany);
         System.out.println("Месячная зарплата первого сотрудника \"" + firstEmployee.getName() +
                 "\" равна " + firstEmployee.getMonthSalary());
         System.out.println("Месячная зарплата второго сотрудника \"" + secondEmployee.getName() +

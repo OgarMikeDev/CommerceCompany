@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public class Company {
-    private Collection<Employee> collectionEmployees = new ArrayList<>();
+    private ArrayList<Employee> collectionEmployees = new ArrayList<>();
     private ArrayList<Double> collectionFullSalaries = new ArrayList<>();
     private double incomeCompany = 0;
 
@@ -67,5 +67,15 @@ public class Company {
             }
             j = collectionFullSalaries.size() - 1;
         }
+    }
+
+    @Override
+    public String toString() {
+        String strCollectionEmployees = "";
+        return "Company{" +
+                "strCollectionEmployees, " + strCollectionEmployees +
+                ", collectionFullSalaries=" + collectionFullSalaries +
+                ", incomeCompany=" + incomeCompany +
+                '}';
     }
 }

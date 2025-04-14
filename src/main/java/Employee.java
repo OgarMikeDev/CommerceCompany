@@ -28,4 +28,14 @@ public abstract class Employee implements FunctionsEmployee {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "name='" + name + '\'' +
+                ", fixedSalary=" + fixedSalary +
+                ", dateStartWork=" + dateStartWork +
+                ", company=" + company +
+                '}';
+    }
 }
