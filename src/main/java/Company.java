@@ -1,80 +1,89 @@
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.List;
 
 public class Company {
-    private ArrayList<Employee> collectionEmployees = new ArrayList<>();
-    private ArrayList<Double> collectionFullSalaries = new ArrayList<>();
-    private double incomeCompany = 0;
+    private ArrayList<Employee> listAllEmployees;
+    private ArrayList<Double> listAllSalaries;
+    private double incomeCompany;
+
+    public Company() {
+        incomeCompany = 0;
+        listAllEmployees = new ArrayList<>();
+        listAllSalaries = new ArrayList<>();
+    }
+
+    public void addSumCompany(double sumForCompany) {
+        incomeCompany += sumForCompany;
+        listAllSalaries.add(sumForCompany);
+    }
+
+    public void hire(Employee employee) {
+        listAllEmployees.add(employee);
+    }
+
+    public void hireAll(ArrayList<Employee> employees) {
+        listAllEmployees.addAll(employees);
+    }
+
+    public void fire(Employee employee) {
+        listAllEmployees.remove(employee);
+    }
 
     public double getIncomeCompany() {
         return incomeCompany;
     }
 
-    public void addSumCompany(double sum) {
-        this.incomeCompany += sum;
-    }
+    public List<Double> getTopSalaryStaff(int count) {
+        sortedSalaries();
+        List<Double> listTopSalaryStaff = new ArrayList<>();
 
-    public void addSalaryAllEmpoloyees(double currentSalary) {
-        collectionFullSalaries.add(currentSalary);
-    }
-
-    public void hire(Employee employee) {
-        collectionEmployees.add(employee);
-
-    }
-
-    public void hireAll(Collection<Employee> collectionEmployees) {
-        collectionEmployees.addAll(collectionEmployees);
-    }
-
-    public void fire(Employee employee) {
-        collectionEmployees.remove(employee);
-    }
-
-    public Collection<Double> getTopSalaryStaff(int count) {
-        sortedCollectionWithSalaries();
-        ArrayList<Double> listTopSalaryStaff = new ArrayList<>();
-        for (int i = collectionFullSalaries.size() - 1; i < collectionFullSalaries.size() - count; i--) {
-            listTopSalaryStaff.add(collectionFullSalaries.get(i));
+        if (listAllSalaries.size() >= count) {
+            for (int i = listAllSalaries.size() - 1; i >= listAllSalaries.size() - count; i--) {
+                listTopSalaryStaff.add(listAllSalaries.get(i));
+            }
         }
+
         return listTopSalaryStaff;
     }
 
-    public Collection<Double> getLowSalaryStaff(int count) {
-        sortedCollectionWithSalaries();
-        ArrayList<Double> listLowSalaryStaff = new ArrayList<>();
-        for (int i = 0; i < count; i++) {
-            listLowSalaryStaff.add(collectionFullSalaries.get(i));
+    public List<Double> getLowSalaryStaff(int count) {
+        sortedSalaries();
+        List<Double> listLowSalaryStaff = new ArrayList<>();
+
+        if (listAllSalaries.size() >= count) {
+            for (int i = 0; i < count; i++) {
+                listLowSalaryStaff.add(listAllSalaries.get(i));
+            }
         }
+
         return listLowSalaryStaff;
     }
 
-    public void sortedCollectionWithSalaries() {
+    public void sortedSalaries() {
         int i = 0;
-        int j = collectionFullSalaries.size() - 1;
-        /*        ВГАБ
-        АБВГ         */
-        for (; i < collectionFullSalaries.size() - 2; i++) {
+        int j = listAllSalaries.size() - 1;
+        /*
+        ВГАБ
+        АБВГ
+         */
+        for (; i < listAllSalaries.size() - 2; i++) {
             for (; j >= (i + 1); j--) {
-                System.out.println("Итерация № " + i);
-                System.out.println("i " + collectionFullSalaries.get(i));
-                System.out.println("j " + collectionFullSalaries.get(j));
-                double temp = collectionFullSalaries.get(i);
-                if (collectionFullSalaries.get(i).compareTo(collectionFullSalaries.get(j)) > 0) {
-                    collectionFullSalaries.set(i, collectionFullSalaries.get(j));
-                    collectionFullSalaries.set(j, temp);
+                double temp = listAllSalaries.get(i);
+                if (listAllSalaries.get(i).compareTo(listAllSalaries.get(j)) > 0) {
+                    listAllSalaries.set(i, listAllSalaries.get(j));
+                    listAllSalaries.set(j, temp
+                    );
                 }
             }
-            j = collectionFullSalaries.size() - 1;
+            j = listAllSalaries.size() - 1;
         }
     }
 
     @Override
     public String toString() {
-        String strCollectionEmployees = "";
         return "Company{" +
-                "strCollectionEmployees, " + strCollectionEmployees +
-                ", collectionFullSalaries=" + collectionFullSalaries +
+                ", listAllEmployees" + listAllEmployees +
+                ", listAllSalaries=" + listAllSalaries +
                 ", incomeCompany=" + incomeCompany +
                 '}';
     }
