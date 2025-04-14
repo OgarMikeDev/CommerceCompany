@@ -4,11 +4,13 @@ public abstract class Employee implements FunctionsEmployee {
     private String name;
     private final double fixedSalary;
     private final LocalDate dateStartWork;
+    protected Company company;
 
-    public Employee(String name, double fixedSalary, LocalDate dateStartWork) {
+    public Employee(String name, double fixedSalary, LocalDate dateStartWork, Company company) {
         this.name = name;
         this.fixedSalary = fixedSalary;
         this.dateStartWork = dateStartWork;
+        this.company = company;
     }
 
     public String getName() {
