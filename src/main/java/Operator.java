@@ -1,8 +1,9 @@
 import java.time.LocalDate;
 
-public class Operator extends Employee {
-    public Operator(String name, double fixedSalary, LocalDate dateStartWork, Company company) {
-        super(name, fixedSalary, dateStartWork, company);
+public class Operator extends Employee{
+
+    public Operator(double fixedSalary, LocalDate dateStartWork, String name, Company company) {
+        super(fixedSalary, dateStartWork, name, company);
     }
 
     @Override
